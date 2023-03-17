@@ -6,6 +6,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Vending Machine</title>
     <link rel="stylesheet" href="style.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700;900&display=swap"
+      rel="stylesheet"
+    />
   </head>
   <body>
     <header>
@@ -15,9 +21,88 @@
         /></a>
       </h1>
     </header>
-    <main>
-      <section>section</section>
-      <section>section</section>
-    </main>
+    <div class="l_wrapper">
+      <main class="l_flex-container">
+        <div class="l_flex-item">
+          <section class="vendor">
+            <h2 class="a11y-hidden">콜라 자판기</h2>
+            <ul class="vendor-items">
+              <li class="vendor-item active">
+                <div class="sold-out"></div>
+                <img src="images/original-cola.svg" alt="오리지널 콜라" />
+                <h3 class="item-name">Original_Cola</h3>
+                <p class="item-price"><span>1000</span>원</p>
+              </li>
+              <li type="button" class="vendor-item disabled">
+                <div class="sold-out">
+                  <strong>품절</strong>
+                </div>
+                <img src="images/violet-cola.svg" alt="바이올렛 콜라" />
+                <h3 class="item-name">Violet_Cola</h3>
+                <p class="item-price"><span>1000</span>원</p>
+              </li>
+              <li type="button" class="vendor-item">
+                <div class="sold-out"></div>
+                <img src="images/yellow-cola.svg" alt="옐로우 콜라" />
+                <h3 class="item-name">Yellow_Cola</h3>
+                <p class="item-price"><span>1000</span>원</p>
+              </li>
+              <li type="button" class="vendor-item">
+                <div class="sold-out"></div>
+                <img src="images/cool-cola.svg" alt="쿨 콜라" />
+                <h3 class="item-name">Cool_Cola</h3>
+                <p class="item-price"><span>1000</span>원</p>
+              </li>
+              <li type="button" class="vendor-item active">
+                <div class="sold-out"></div>
+                <img src="images/green-cola.svg" alt="그린 콜라" />
+                <h3 class="item-name">Green_Cola</h3>
+                <p class="item-price"><span>1000</span>원</p>
+              </li>
+              <li type="button" class="vendor-item">
+                <img src="images/orange-cola.svg" alt="오렌지 콜라" />
+                <h3 class="item-name">Orange_Cola</h3>
+                <p class="item-price"><span>1000</span>원</p>
+              </li>
+            </ul>
+            <div class="balance">
+              <p class="balance-state">잔액 : <span>1,000원</span></p>
+              <button type="button" class="btn-change">거스름돈 반환</button>
+            </div>
+            <form class="form-deposit">
+              <input
+                type="text"
+                class="input-deposit"
+                placeholder="입금액 입력"
+              />
+              <button type="button" class="btn-deposit">입금</button>
+            </form>
+            <div class="select">
+              <ul class="selected-lists">
+                <li class="selected-list">
+                  <img src="images/original-cola.svg" alt="오리지널 콜라" />
+                  <h3 class="item-name">Original Cola</h3>
+                  <p class="ord-number">1</p>
+                </li>
+                <li class="selected-list">
+                  <img src="images/green-cola.svg" alt="그린 콜라" />
+                  <h3 class="item-name">Green Cola</h3>
+                  <p class="ord-number">2</p>
+                </li>
+              </ul>
+              <button type="button" class="btn-select">획득</button>
+            </div>
+          </section>
+        </div>
+        <div class="l_flex-item">
+          <section>
+            <h2>소지금</h2>
+          </section>
+          <section>
+            <h2>획득한 음료</h2>
+          </section>
+        </div>
+      </main>
+    </div>
   </body>
 </html>
