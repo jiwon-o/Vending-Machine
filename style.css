@@ -1,0 +1,23 @@
+/* Resets */
+body,
+h1 {
+  margin: 0;
+  padding: 0;
+}
+
+img {
+  vertical-align: top;
+}
+
+/* Components */
+body {
+  background-color: #eae8fe;
+}
+
+header {
+  text-align: center;
+}
+
+header img {
+  width: 386px;
+}
