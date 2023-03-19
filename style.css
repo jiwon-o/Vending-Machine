@@ -51,6 +51,7 @@ body,
 h1,
 h2,
 h3,
+h4,
 p,
 ul,
 button {
@@ -87,6 +88,11 @@ h3 {
   font-weight: 500;
 }
 
+h4 {
+  font-size: 12px;
+  font-weight: 500;
+}
+
 .a11y-hidden {
   clip: rect(1px, 1px, 1px, 1px);
   clip-path: inset(50%);
@@ -101,7 +107,7 @@ h3 {
 /* Layouts */
 .l_wrapper {
   width: 748px;
-  margin: 67px auto;
+  margin: 0 auto;
 }
 
 .l_flex-container {
@@ -111,7 +117,6 @@ h3 {
 
 .l_flex-item {
   width: 360px;
-  box-shadow: inset 0 0 10px yellow;
   flex-grow: 1;
 }
 
@@ -122,13 +127,15 @@ body {
 }
 
 header {
-  box-shadow: inset 0 0 10px blue;
   text-align: center;
 }
 
 header .logo {
-  box-shadow: inset 0 0 10px yellow;
   width: 386px;
+}
+
+main {
+  margin: 67px auto;
 }
 
 .vendor {
@@ -157,7 +164,7 @@ header .logo {
   box-shadow: 0 0 0 3px #6327fe;
 }
 
-.vendor-item.disabled .sold-out {
+.vendor-item .sold-out {
   width: 100%;
   height: 100%;
   position: absolute;
@@ -171,7 +178,15 @@ header .logo {
   cursor: default;
 }
 
-.sold-out strong {
+.vendor-item.disabled .sold-out {
+  clip: auto;
+  clip-path: none;
+  margin: 0;
+  padding: 0;
+  overflow: visible;
+}
+
+.vendor-item.disabled .sold-out strong {
   display: inline-block;
   font-weight: 900;
   color: white;
@@ -185,7 +200,7 @@ header .logo {
 .vendor-item img {
   width: 36px;
   height: 65px;
-  margin-bottom: 7.5px;
+  margin-bottom: 6px;
 }
 
 .vendor-item .item-name {
@@ -199,30 +214,23 @@ header .logo {
   color: #fff;
   font-weight: 500;
   border-radius: 50px;
-  font-size: 11px;
+  font-size: 12px;
   line-height: 22px;
 }
 
-.item-price span {
-  font-size: 12px;
-}
-
-.balance,
+.vendor-balance,
 .form-deposit,
-.select {
+.vendor-select {
   height: 33px;
   display: flex;
 }
 
-.balance {
+.vendor-balance,
+.form-deposit {
   margin-bottom: 11px;
 }
 
-.form-deposit {
-  margin-bottom: 12px;
-}
-
-.select {
+.vendor-select {
   height: 106px;
 }
 
@@ -235,14 +243,16 @@ header .logo {
   margin-right: 12px;
 }
 
-.balance-state {
+.balance-state,
+.possessed-state {
   background-color: #eae8fe;
   font-size: 14px;
   line-height: 33px;
   padding: 0 10px;
 }
 
-.balance-state span {
+.balance-state span,
+.possessed-state span {
   float: right;
 }
 
@@ -261,23 +271,28 @@ header .logo {
   font-weight: 500;
 }
 
-.selected-lists {
+.selected-lists,
+.obtained-lists {
   overflow-y: auto;
   padding: 12px;
   background-color: #eae8fe;
+  border: 1px solid #bdbdbd;
 }
 
-.selected-lists::-webkit-scrollbar {
+.selected-lists::-webkit-scrollbar,
+.obtained-lists::-webkit-scrollbar {
   width: 7px;
 }
-.selected-lists::-webkit-scrollbar-thumb {
+.selected-lists::-webkit-scrollbar-thumb,
+.obtained-lists::-webkit-scrollbar-thumb {
   height: 20%;
-  background-color: #fff;
+  background-color: white;
   border-radius: 50px;
   background-clip: padding-box;
   border: 2px solid transparent;
 }
-.selected-lists::-webkit-scrollbar-track {
+.selected-lists::-webkit-scrollbar-track,
+.obtained-lists::-webkit-scrollbar-track {
   background-color: transparent;
   border-radius: 50px;
   box-shadow: inset 0px 0px 5px transparent;
@@ -301,7 +316,8 @@ header .logo {
   font-weight: 700;
 }
 
-.selected-list {
+.selected-list,
+.obtained-list {
   display: flex;
   align-items: center;
   background-color: #fff;
@@ -317,20 +333,23 @@ header .logo {
   box-shadow: 0 0 0 1.5px #6327fe;
 }
 
-.selected-list:not(:last-child) {
+.selected-list:not(:last-child),
+.obtained-list:not(:last-child) {
   margin-bottom: 6px;
 }
 
-.selected-list img {
+.selected-list img,
+.obtained-list img {
   width: 18px;
   height: 33px;
 }
 
-.selected-list .item-name {
+.selected-list .item-name,
+.obtained-list .item-name {
   margin-left: 10px;
 }
 
-.ord-number {
+.list-cnt {
   margin-left: auto;
   width: 30px;
   height: 30px;
@@ -340,4 +359,63 @@ header .logo {
   line-height: 27px;
   font-size: 14px;
   font-weight: 500;
+}
+
+.possessed {
+  background-color: #fff;
+  padding: 9px 27px;
+  margin-bottom: 20px;
+}
+
+.possessed-state {
+  font-weight: 500;
+  border-radius: 5px;
+  line-height: 33px;
+}
+
+.obtained {
+  background-color: #fff;
+  padding: 25px 27px 26px;
+}
+.obtained h2 {
+  text-align: center;
+  margin-bottom: 13px;
+}
+
+.obtained-lists {
+  height: 374px;
+  border-radius: 5px;
+  margin-bottom: 6px;
+}
+
+.obtained h4 {
+  text-align: end;
+  margin-bottom: 8px;
+}
+
+@media (max-width: 800px) {
+  .l_wrapper {
+    width: 360px;
+    margin: 0 auto;
+    background-color: #fff;
+  }
+
+  header .logo {
+    width: 166px;
+  }
+
+  main {
+    margin: 18px auto 0;
+  }
+
+  .vendor {
+    background-color: #fff;
+    padding: 0 27px;
+  }
+
+  .l_flex-container {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
 }

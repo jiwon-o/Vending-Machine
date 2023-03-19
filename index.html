@@ -14,58 +14,58 @@
     />
   </head>
   <body>
-    <header>
-      <h1>
-        <a href="#"
-          ><img src="images/logo.svg" alt="ColaCola" class="logo"
-        /></a>
-      </h1>
-    </header>
     <div class="l_wrapper">
+      <header>
+        <h1>
+          <a href="#"
+            ><img src="images/logo.svg" alt="ColaCola" class="logo"
+          /></a>
+        </h1>
+      </header>
+
       <main class="l_flex-container">
         <div class="l_flex-item">
           <section class="vendor">
             <h2 class="a11y-hidden">콜라 자판기</h2>
             <ul class="vendor-items">
               <li class="vendor-item active">
-                <div class="sold-out"></div>
                 <img src="images/original-cola.svg" alt="오리지널 콜라" />
                 <h3 class="item-name">Original_Cola</h3>
                 <p class="item-price"><span>1000</span>원</p>
+                <div class="sold-out a11y-hidden"><strong>품절</strong></div>
               </li>
-              <li type="button" class="vendor-item disabled">
-                <div class="sold-out">
-                  <strong>품절</strong>
-                </div>
+              <li class="vendor-item disabled">
                 <img src="images/violet-cola.svg" alt="바이올렛 콜라" />
                 <h3 class="item-name">Violet_Cola</h3>
                 <p class="item-price"><span>1000</span>원</p>
+                <div class="sold-out a11y-hidden"><strong>품절</strong></div>
               </li>
-              <li type="button" class="vendor-item">
-                <div class="sold-out"></div>
+              <li class="vendor-item">
                 <img src="images/yellow-cola.svg" alt="옐로우 콜라" />
                 <h3 class="item-name">Yellow_Cola</h3>
                 <p class="item-price"><span>1000</span>원</p>
+                <div class="sold-out a11y-hidden"><strong>품절</strong></div>
               </li>
-              <li type="button" class="vendor-item">
-                <div class="sold-out"></div>
+              <li class="vendor-item">
                 <img src="images/cool-cola.svg" alt="쿨 콜라" />
                 <h3 class="item-name">Cool_Cola</h3>
                 <p class="item-price"><span>1000</span>원</p>
+                <div class="sold-out a11y-hidden"><strong>품절</strong></div>
               </li>
-              <li type="button" class="vendor-item active">
-                <div class="sold-out"></div>
+              <li class="vendor-item active">
                 <img src="images/green-cola.svg" alt="그린 콜라" />
                 <h3 class="item-name">Green_Cola</h3>
                 <p class="item-price"><span>1000</span>원</p>
+                <div class="sold-out a11y-hidden"><strong>품절</strong></div>
               </li>
-              <li type="button" class="vendor-item">
+              <li class="vendor-item">
                 <img src="images/orange-cola.svg" alt="오렌지 콜라" />
                 <h3 class="item-name">Orange_Cola</h3>
                 <p class="item-price"><span>1000</span>원</p>
+                <div class="sold-out a11y-hidden"><strong>품절</strong></div>
               </li>
             </ul>
-            <div class="balance">
+            <div class="vendor-balance">
               <p class="balance-state">잔액 : <span>1,000원</span></p>
               <button type="button" class="btn-change">거스름돈 반환</button>
             </div>
@@ -77,17 +77,17 @@
               />
               <button type="button" class="btn-deposit">입금</button>
             </form>
-            <div class="select">
+            <div class="vendor-select">
               <ul class="selected-lists">
                 <li class="selected-list">
                   <img src="images/original-cola.svg" alt="오리지널 콜라" />
                   <h3 class="item-name">Original Cola</h3>
-                  <p class="ord-number">1</p>
+                  <p class="list-cnt">1</p>
                 </li>
                 <li class="selected-list">
                   <img src="images/green-cola.svg" alt="그린 콜라" />
                   <h3 class="item-name">Green Cola</h3>
-                  <p class="ord-number">2</p>
+                  <p class="list-cnt">2</p>
                 </li>
               </ul>
               <button type="button" class="btn-select">획득</button>
@@ -95,11 +95,35 @@
           </section>
         </div>
         <div class="l_flex-item">
-          <section>
-            <h2>소지금</h2>
+          <section class="possessed">
+            <h2 class="a11y-hidden">소지금</h2>
+            <p class="possessed-state">소지금 : <span>25,000원</span></p>
           </section>
-          <section>
+          <section class="obtained">
             <h2>획득한 음료</h2>
+            <ul class="obtained-lists">
+              <li class="obtained-list">
+                <img src="images/original-cola.svg" alt="오리지널 콜라" />
+                <h3 class="item-name">Original Cola</h3>
+                <p class="list-cnt">1</p>
+              </li>
+              <li class="obtained-list">
+                <img src="images/green-cola.svg" alt="그린 콜라" />
+                <h3 class="item-name">Green Cola</h3>
+                <p class="list-cnt">2</p>
+              </li>
+              <li class="obtained-list">
+                <img src="images/orange-cola.svg" alt="오렌지 콜라" />
+                <h3 class="item-name">Orange Cola</h3>
+                <p class="list-cnt">1</p>
+              </li>
+              <li class="obtained-list">
+                <img src="images/violet-cola.svg" alt="바이올렛 콜라" />
+                <h3 class="item-name">Violet Cola</h3>
+                <p class="list-cnt">5</p>
+              </li>
+            </ul>
+            <h4>총금액 : <span>9,000</span>원</h4>
           </section>
         </div>
       </main>
