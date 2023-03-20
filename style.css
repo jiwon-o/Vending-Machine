@@ -1,49 +1,6 @@
 @font-face {
-  font-family: "Noto Sans KR";
-  src: url(//fonts.gstatic.com/ea/notosanskr/v2/NotoSansKR-Regular.woff2)
-      format("woff2"),
-    url(//fonts.gstatic.com/ea/notosanskr/v2/NotoSansKR-Regular.woff)
-      format("woff"),
-    url(//fonts.gstatic.com/ea/notosanskr/v2/NotoSansKR-Regular.otf)
-      format("opentype");
-  font-style: normal;
-  font-weight: 400;
-}
-
-@font-face {
-  font-family: "Noto Sans KR";
-  src: url(//fonts.gstatic.com/ea/notosanskr/v2/NotoSansKR-Medium.woff2)
-      format("woff2"),
-    url(//fonts.gstatic.com/ea/notosanskr/v2/NotoSansKR-Medium.woff)
-      format("woff"),
-    url(//fonts.gstatic.com/ea/notosanskr/v2/NotoSansKR-Medium.otf)
-      format("opentype");
-  font-style: normal;
-  font-weight: 500;
-}
-
-@font-face {
-  font-family: "Noto Sans KR";
-  src: url(//fonts.gstatic.com/ea/notosanskr/v2/NotoSansKR-Bold.woff2)
-      format("woff2"),
-    url(//fonts.gstatic.com/ea/notosanskr/v2/NotoSansKR-Bold.woff)
-      format("woff"),
-    url(//fonts.gstatic.com/ea/notosanskr/v2/NotoSansKR-Bold.otf)
-      format("opentype");
-  font-style: normal;
-  font-weight: 700;
-}
-
-@font-face {
-  font-family: "Noto Sans KR";
-  src: url(//fonts.gstatic.com/ea/notosanskr/v2/NotoSansKR-Black.woff2)
-      format("woff2"),
-    url(//fonts.gstatic.com/ea/notosanskr/v2/NotoSansKR-Black.woff)
-      format("woff"),
-    url(//fonts.gstatic.com/ea/notosanskr/v2/NotoSansKR-Black.otf)
-      format("opentype");
-  font-style: normal;
-  font-weight: 900;
+  font-family: fac;
+  src: url();
 }
 
 :root {
@@ -65,7 +22,6 @@ body,
 h1,
 h2,
 h3,
-h4,
 p,
 ul,
 button {
@@ -81,7 +37,7 @@ button {
   background: inherit;
   border: none;
   cursor: pointer;
-  font-family: "Noto Sans KR", sans-serif;
+  font-family: inherit;
 }
 
 img {
@@ -99,11 +55,6 @@ h2 {
 
 h3 {
   font-size: 9px;
-  font-weight: 500;
-}
-
-h4 {
-  font-size: 12px;
   font-weight: 500;
 }
 
@@ -159,7 +110,7 @@ main {
 
 .vendor-items {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: repeat(3, minmax(94px, 1fr));
   gap: 12px;
   margin-bottom: 20px;
   text-align: center;
@@ -257,15 +208,12 @@ main {
 
 .balance-state,
 .possessed-state {
+  display: flex;
+  justify-content: space-between;
   background-color: #eae8fe;
   font-size: 14px;
   line-height: 33px;
   padding: 0 10px;
-}
-
-.balance-state span,
-.possessed-state span {
-  float: right;
 }
 
 .input-deposit {
@@ -363,6 +311,12 @@ main {
   margin-left: 10px;
 }
 
+.item-name {
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden;
+}
+
 .list-cnt {
   margin-left: auto;
   width: 30px;
@@ -403,9 +357,11 @@ main {
   margin-bottom: 6px;
 }
 
-.obtained h4 {
+.obtained-total {
   text-align: end;
   margin-bottom: 8px;
+  font-size: 12px;
+  font-weight: 500;
 }
 
 @media (max-width: 800px) {

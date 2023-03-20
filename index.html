@@ -65,19 +65,22 @@
                 <div class="sold-out a11y-hidden"><strong>품절</strong></div>
               </li>
             </ul>
-            <div class="vendor-balance">
-              <p class="balance-state">잔액 : <span>1,000 원</span></p>
+            <form class="vendor-balance">
+              <div class="balance-state">
+                <p>잔액 :</p>
+                <p><span>1,000</span> 원</p>
+              </div>
               <button type="button" class="btn-change">거스름돈 반환</button>
-            </div>
+            </form>
             <form class="form-deposit">
               <input
                 type="text"
                 class="input-deposit"
                 placeholder="입금액 입력"
               />
-              <button type="button" class="btn-deposit">입금</button>
+              <button type="submit" class="btn-deposit">입금</button>
             </form>
-            <div class="vendor-select">
+            <form class="vendor-select">
               <ul class="selected-lists">
                 <li class="selected-list">
                   <img src="images/original-cola.svg" alt="오리지널 콜라" />
@@ -91,13 +94,16 @@
                 </li>
               </ul>
               <button type="button" class="btn-select">획득</button>
-            </div>
+            </form>
           </section>
         </div>
         <div class="l_flex-item">
           <section class="possessed">
             <h2 class="a11y-hidden">소지금</h2>
-            <p class="possessed-state">소지금 : <span>25,000 원</span></p>
+            <div class="possessed-state">
+              <p>소지금 :</p>
+              <p><span>25,000</span> 원</p>
+            </div>
           </section>
           <section class="obtained">
             <h2>획득한 음료</h2>
@@ -123,7 +129,7 @@
                 <p class="list-cnt">5</p>
               </li>
             </ul>
-            <h4>총금액 : <span>9,000</span> 원</h4>
+            <p class="obtained-total">총금액 : <span>9,000</span> 원</p>
           </section>
         </div>
       </main>
