@@ -65,19 +65,31 @@ h3 {
 }
 
 /* Layouts */
-.l_wrapper {
+.wrapper {
   width: 748px;
   margin: 0 auto;
 }
 
-.l_flex-container {
-  display: flex;
-  gap: 28px;
+.container {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: 50px auto;
+  grid-template-areas:
+    "section1 section2"
+    "section1 section3";
+  gap: 24px;
 }
 
-.l_flex-item {
-  width: 360px;
-  flex-grow: 1;
+.vendor {
+  grid-area: section1;
+}
+
+.possessed {
+  grid-area: section2;
+}
+
+.obtained {
+  grid-area: section3;
 }
 
 /* Components */
@@ -94,7 +106,7 @@ header .logo {
   width: 386px;
 }
 
-main {
+.container {
   margin: 67px auto;
 }
 
@@ -148,7 +160,7 @@ main {
   font-weight: 900;
   color: var(--color-white);
   border: none;
-  margin-top: 60%;
+  margin-top: 50%;
   padding: 0 10px 2px;
   border: var(--border-double);
   transform: rotate(-17.97deg);
@@ -234,6 +246,10 @@ main {
   border: var(--border-solid);
 }
 
+.obtained-lists {
+  height: 381px;
+}
+
 /* scrollbar custom */
 .selected-lists::-webkit-scrollbar,
 .obtained-lists::-webkit-scrollbar {
@@ -298,7 +314,6 @@ main {
 .selected-list img,
 .obtained-list img {
   width: 18px;
-  height: 33px;
 }
 
 .selected-list .item-name,
@@ -327,7 +342,6 @@ main {
 .possessed {
   background-color: var(--color-white);
   padding: 9px 27px;
-  margin-bottom: 20px;
 }
 
 .possessed-state {
@@ -337,6 +351,8 @@ main {
 }
 
 .obtained {
+  display: flex;
+  flex-direction: column;
   background-color: var(--color-white);
   padding: 25px 27px 26px;
 }
@@ -347,20 +363,19 @@ main {
 }
 
 .obtained-lists {
-  height: 374px;
   border-radius: var(--border-radius-5);
-  margin-bottom: 6px;
+  flex-grow: 1;
 }
 
 .obtained-total {
   text-align: end;
-  margin-bottom: 8px;
   font-size: 12px;
   font-weight: 500;
+  margin-top: 6px;
 }
 
 @media (max-width: 800px) {
-  .l_wrapper {
+  .wrapper {
     width: 360px;
     margin: 0 auto;
     background-color: var(--color-white);
@@ -370,34 +385,18 @@ main {
     width: 166px;
   }
 
-  main {
-    margin: 18px auto 0;
+  .container {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+    margin: 0;
   }
 
   .vendor {
     background-color: var(--color-white);
-    padding: 0 27px;
-  }
-
-  .l_flex-container {
-    display: flex;
-    flex-direction: column;
-    gap: 20px;
   }
 
   .form-deposit input::placeholder {
     text-indent: 115px;
-  }
-
-  .vendor-item.disabled .sold-out strong {
-    display: inline-block;
-    font-weight: 900;
-    color: var(--color-white);
-    border: none;
-    margin-top: 30%;
-    padding: 0 10px 2px;
-    border: var(--border-double);
-    transform: rotate(-17.97deg);
-    cursor: default;
   }
 }
