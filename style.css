@@ -125,6 +125,9 @@ header .logo {
 }
 
 .vendor-item {
+}
+
+.btn-cola {
   position: relative;
   width: 94px;
   padding: 11px 13px;
@@ -132,11 +135,11 @@ header .logo {
   border-radius: var(--border-radius-10);
 }
 
-.vendor-item.active {
+.btn-cola.active {
   box-shadow: 0 0 0 3px var(--color-main);
 }
 
-.vendor-item .sold-out {
+.btn-cola .sold-out {
   width: 100%;
   height: 100%;
   position: absolute;
@@ -147,15 +150,7 @@ header .logo {
   cursor: default;
 }
 
-.vendor-item.disabled .sold-out {
-  clip: auto;
-  clip-path: none;
-  margin: 0;
-  padding: 0;
-  overflow: visible;
-}
-
-.vendor-item.disabled .sold-out strong {
+.btn-cola .sold-out strong {
   display: inline-block;
   font-weight: 900;
   color: var(--color-white);
@@ -167,17 +162,17 @@ header .logo {
   cursor: default;
 }
 
-.vendor-item img {
+.btn-cola img {
   width: 36px;
   height: 65px;
   margin-bottom: 6px;
 }
 
-.vendor-item .item-name {
+.btn-cola .item-name {
   margin-bottom: 7px;
 }
 
-.vendor-item .item-price {
+.btn-cola .item-price {
   width: 70px;
   height: 22px;
   background-color: var(--color-main);
