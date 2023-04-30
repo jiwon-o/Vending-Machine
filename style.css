@@ -49,7 +49,7 @@ h2 {
 }
 
 h3 {
-  font-size: 9px;
+  font-size: 14px;
   font-weight: 500;
 }
 
@@ -84,11 +84,11 @@ main {
   grid-area: section1;
 }
 
-.possessed {
+.my-info {
   grid-area: section2;
 }
 
-.obtained {
+.get-info {
   grid-area: section3;
 }
 
@@ -108,6 +108,14 @@ header .logo {
 
 main {
   margin: 67px auto;
+}
+
+.item-name {
+  font-size: 9px;
+  font-weight: 500;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden;
 }
 
 .vendor {
@@ -164,10 +172,6 @@ main {
   margin-bottom: 6px;
 }
 
-.btn-cola .item-name {
-  margin-bottom: 7px;
-}
-
 .btn-cola .item-price {
   width: 70px;
   height: 22px;
@@ -177,6 +181,7 @@ main {
   border-radius: var(--border-radius-50);
   font-size: 12px;
   line-height: 22px;
+  margin-top: 7px;
 }
 
 .form-vendor {
@@ -188,24 +193,31 @@ main {
 }
 
 .vendor-balance,
-.possessed-money {
+.my-money {
   display: flex;
   justify-content: space-between;
+  align-items: center;
   background-color: #eae8fe;
   font-size: 14px;
-  line-height: 33px;
   padding: 0 10px;
+  font-weight: 500;
   border-radius: var(--border-radius-5);
+  width: 100%;
 }
 
-#inpDeposit {
+.vendor-balance h3::after,
+.my-money h3::after {
+  content: " :";
+}
+
+#inpMoney {
   font-size: 13px;
   padding-left: 6px;
   border: var(--border-solid);
   border-radius: var(--border-radius-5);
 }
 
-#inpDeposit:focus {
+#inpMoney:focus {
   outline: 1px solid var(--color-main);
 }
 
@@ -214,8 +226,7 @@ main {
   font-weight: 500;
 }
 
-.selected-lists,
-.obtained-lists {
+.get-lists {
   overflow-y: auto;
   padding: 12px;
   background-color: #eae8fe;
@@ -224,30 +235,26 @@ main {
 }
 
 /* scrollbar custom */
-.selected-lists::-webkit-scrollbar,
-.obtained-lists::-webkit-scrollbar {
+.get-lists::-webkit-scrollbar {
   width: 8px;
 }
 
-.selected-lists::-webkit-scrollbar-thumb,
-.obtained-lists::-webkit-scrollbar-thumb {
+.get-lists::-webkit-scrollbar-thumb {
   background-color: var(--color-white);
   border-radius: var(--border-radius-50);
   background-clip: padding-box;
   border: 2px solid transparent;
 }
 
-.selected-lists::-webkit-scrollbar-track,
-.obtained-lists::-webkit-scrollbar-track {
+.get-lists::-webkit-scrollbar-track {
   background-color: transparent;
   border-radius: var(--border-radius-50);
   box-shadow: inset 0px 0px 5px transparent;
 }
 
-.btn-change,
-.btn-deposit,
-.btn-select {
-  flex-basis: 94px;
+.btn-return,
+.btn-put,
+.btn-get {
   color: #000;
   font-size: 13px;
   font-weight: 500;
@@ -256,14 +263,13 @@ main {
   box-shadow: 0 0 4px 0 rgba(0, 0, 0, 0.5);
 }
 
-.btn-select {
+.btn-get {
   background-color: var(--color-main);
   color: var(--color-white);
   font-weight: 700;
 }
 
-.selected-list,
-.obtained-list {
+.get-list {
   display: flex;
   align-items: center;
   background-color: var(--color-white);
@@ -271,76 +277,64 @@ main {
   border-radius: var(--border-radius-5);
 }
 
-.selected-list:hover {
+.get-list:hover {
   cursor: pointer;
 }
 
-.selected-list.active {
+.get-list.active {
   box-shadow: 0 0 0 1.5px var(--color-main);
 }
 
-.selected-list:not(:last-child),
-.obtained-list:not(:last-child) {
+.get-list:not(:last-child) {
   margin-bottom: 6px;
 }
 
-.selected-list img,
-.obtained-list img {
+.get-list img {
   width: 18px;
 }
 
-.selected-list .item-name,
-.obtained-list .item-name {
+.get-list .item-name {
   margin-left: 10px;
 }
 
-.item-name {
-  white-space: nowrap;
-  text-overflow: ellipsis;
-  overflow: hidden;
-}
-
-.list-cnt {
+.get-cnt {
+  display: flex;
+  justify-content: center;
+  align-items: center;
   margin-left: auto;
   width: 30px;
   height: 30px;
   border: var(--border-solid);
   border-radius: var(--border-radius-5);
-  text-align: center;
-  line-height: 27px;
   font-size: 14px;
   font-weight: 500;
 }
 
-.possessed {
+.my-info {
+  display: flex;
+  justify-content: space-between;
   background-color: var(--color-white);
   padding: 9px 27px;
 }
 
-.possessed-state {
-  font-weight: 500;
-  border-radius: var(--border-radius-5);
-  line-height: 33px;
-}
-
-.obtained {
+.get-info {
   display: flex;
   flex-direction: column;
   background-color: var(--color-white);
   padding: 25px 27px 26px;
 }
 
-.obtained h2 {
+.get-info h2 {
   text-align: center;
   margin-bottom: 13px;
 }
 
-.obtained-lists {
+.get-info .get-lists {
   height: 381px;
   flex-grow: 1;
 }
 
-.obtained-total {
+.get-info .total {
   text-align: end;
   font-size: 12px;
   font-weight: 500;
@@ -353,6 +347,7 @@ main {
     margin: 0 auto;
     background-color: var(--color-white);
   }
+
   header .logo {
     width: 166px;
   }
@@ -368,7 +363,11 @@ main {
     background-color: var(--color-white);
   }
 
-  .form-deposit input::placeholder {
-    text-indent: 115px;
+  .my-info {
+    height: 50px;
   }
+
+  /* #inpMoney::placeholder {
+    text-indent: 115px;
+  } */
 }
