@@ -18,43 +18,45 @@
         <h1><img src="images/logo.svg" alt="ColaCola" class="logo" /></h1>
       </header>
 
-      <main class="container">
+      <main>
         <section class="vendor">
           <h2 class="a11y-hidden">콜라 자판기</h2>
           <ul class="vendor-items"></ul>
-          <form class="vendor-balance">
-            <div class="balance-state">
+          <form class="form-vendor">
+            <div class="vendor-balance">
               <p>잔액 :</p>
               <p><span>1,000</span> 원</p>
             </div>
             <button type="button" class="btn-change">거스름돈 반환</button>
-          </form>
-          <form class="form-deposit">
+
+            <label for="inpDeposit" class="a11y-hidden"
+              >금액 투입(단위: 원)</label
+            >
             <input
-              type="text"
-              class="input-deposit"
+              id="inpDeposit"
+              type="number"
+              min="500"
+              step="500"
               placeholder="입금액 입력" />
-            <button type="submit" class="btn-deposit">입금</button>
-          </form>
-          <form class="vendor-select">
+            <button type="button" class="btn-deposit">입금</button>
             <ul class="selected-lists">
               <li class="selected-list">
-                <img src="images/original-cola.svg" alt="오리지널 콜라" />
+                <img src="images/cola-original.svg" alt="오리지널 콜라" />
                 <h3 class="item-name">Original Cola</h3>
                 <p class="list-cnt">1</p>
               </li>
               <li class="selected-list">
-                <img src="images/green-cola.svg" alt="그린 콜라" />
+                <img src="images/cola-green.svg" alt="그린 콜라" />
                 <h3 class="item-name">Green Cola</h3>
                 <p class="list-cnt">2</p>
               </li>
             </ul>
-            <button type="button" class="btn-select">획득</button>
+            <button type="submit" class="btn-select">획득</button>
           </form>
         </section>
         <section class="possessed">
           <h2 class="a11y-hidden">소지금</h2>
-          <div class="possessed-state">
+          <div class="possessed-money">
             <p>소지금 :</p>
             <p><span>25,000</span> 원</p>
           </div>
@@ -63,22 +65,22 @@
           <h2>획득한 음료</h2>
           <ul class="obtained-lists">
             <li class="obtained-list">
-              <img src="images/original-cola.svg" alt="오리지널 콜라" />
+              <img src="images/cola-original.svg" alt="오리지널 콜라" />
               <h3 class="item-name">Original Cola</h3>
               <p class="list-cnt">1</p>
             </li>
             <li class="obtained-list">
-              <img src="images/green-cola.svg" alt="그린 콜라" />
+              <img src="images/cola-green.svg" alt="그린 콜라" />
               <h3 class="item-name">Green Cola</h3>
               <p class="list-cnt">2</p>
             </li>
             <li class="obtained-list">
-              <img src="images/orange-cola.svg" alt="오렌지 콜라" />
+              <img src="images/cola-orange.svg" alt="오렌지 콜라" />
               <h3 class="item-name">Orange Cola</h3>
               <p class="list-cnt">1</p>
             </li>
             <li class="obtained-list">
-              <img src="images/violet-cola.svg" alt="바이올렛 콜라" />
+              <img src="images/cola-violet.svg" alt="바이올렛 콜라" />
               <h3 class="item-name">Violet Cola</h3>
               <p class="list-cnt">5</p>
             </li>

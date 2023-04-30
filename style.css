@@ -70,7 +70,7 @@ h3 {
   margin: 0 auto;
 }
 
-.container {
+main {
   display: grid;
   grid-template-columns: 1fr 1fr;
   grid-template-rows: 50px auto;
@@ -106,7 +106,7 @@ header .logo {
   width: 386px;
 }
 
-.container {
+main {
   margin: 67px auto;
 }
 
@@ -119,12 +119,8 @@ header .logo {
   display: grid;
   grid-template-columns: repeat(3, minmax(94px, 1fr));
   gap: 12px;
-  margin-bottom: 20px;
   text-align: center;
   cursor: pointer;
-}
-
-.vendor-item {
 }
 
 .btn-cola {
@@ -135,7 +131,7 @@ header .logo {
   border-radius: var(--border-radius-10);
 }
 
-.btn-cola.active {
+.btn-cola:hover {
   box-shadow: 0 0 0 3px var(--color-main);
 }
 
@@ -183,52 +179,37 @@ header .logo {
   line-height: 22px;
 }
 
-.vendor-balance,
-.form-deposit,
-.vendor-select {
-  height: 33px;
-  display: flex;
+.form-vendor {
+  display: grid;
+  grid-template-columns: auto calc((100% - 24px) / 3);
+  grid-template-rows: 32px 32px 106px;
+  gap: 12px;
+  margin-top: 20px;
 }
 
 .vendor-balance,
-.form-deposit {
-  margin-bottom: 11px;
-}
-
-.vendor-select {
-  height: 106px;
-}
-
-.balance-state,
-.input-deposit,
-.selected-lists {
-  flex-basis: 200px;
-  font-weight: 500;
-  border-radius: var(--border-radius-5);
-  margin-right: 12px;
-}
-
-.balance-state,
-.possessed-state {
+.possessed-money {
   display: flex;
   justify-content: space-between;
   background-color: #eae8fe;
   font-size: 14px;
   line-height: 33px;
   padding: 0 10px;
+  border-radius: var(--border-radius-5);
 }
 
-.input-deposit {
+#inpDeposit {
   font-size: 13px;
   padding-left: 6px;
   border: var(--border-solid);
+  border-radius: var(--border-radius-5);
 }
 
-.input-deposit:focus {
+#inpDeposit:focus {
   outline: 1px solid var(--color-main);
 }
 
-.input-deposit::placeholder {
+#inp-Deposit::placeholder {
   color: #bdbdbd;
   font-weight: 500;
 }
@@ -239,10 +220,7 @@ header .logo {
   padding: 12px;
   background-color: #eae8fe;
   border: var(--border-solid);
-}
-
-.obtained-lists {
-  height: 381px;
+  border-radius: var(--border-radius-5);
 }
 
 /* scrollbar custom */
@@ -358,7 +336,7 @@ header .logo {
 }
 
 .obtained-lists {
-  border-radius: var(--border-radius-5);
+  height: 381px;
   flex-grow: 1;
 }
 
@@ -375,12 +353,11 @@ header .logo {
     margin: 0 auto;
     background-color: var(--color-white);
   }
-
   header .logo {
     width: 166px;
   }
 
-  .container {
+  main {
     display: flex;
     flex-direction: column;
     gap: 0;
