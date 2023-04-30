@@ -35,6 +35,17 @@ class VendingMachineEvents {
       }
       this.inpMoney.value = "";
     });
+
+    this.btnReturn.addEventListener("click", () => {
+      const balanceVal = parseInt(this.balance.textContent.replaceAll(",", ""));
+      const myMoneyVal = parseInt(this.myMoney.textContent.replaceAll(",", ""));
+
+      if (balanceVal) {
+        this.myMoney.textContent =
+          new Intl.NumberFormat().format(balanceVal + myMoneyVal) + " 원";
+        this.balance.textContent = "0 원";
+      }
+    });
   }
 }
 
