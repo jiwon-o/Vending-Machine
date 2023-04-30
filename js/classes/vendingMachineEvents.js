@@ -14,7 +14,7 @@ class VendingMachineEvents {
 
     const getInfo = document.querySelector(".get-info");
     this.getLists = getInfo.querySelector(".get-lists");
-    this.txtTotal = getInfo.querySelector(".total-price");
+    this.totalPrice = getInfo.querySelector(".total-price span");
   }
 
   stagedItemGenerator(target) {
@@ -26,19 +26,6 @@ class VendingMachineEvents {
             <p class="get-cnt">1</p>
           `;
     this.stagedLists.append(stagedItem);
-  }
-
-  getItemGenerator(item) {
-    const getItem = document.createElement("li");
-    console.log(item);
-    getItem.classList = "get-list";
-    getItem.innerHTML = `
-      <li class="get-list">
-        <img src="images/cola-violet.svg" alt="바이올렛 콜라" />
-        <span class="item-name">Violet Cola</span>
-        <p class="get-cnt">5</p>
-      </li>
-    `;
   }
 
   bindEvent() {
@@ -107,14 +94,19 @@ class VendingMachineEvents {
 
     this.getCnt = this.getLists.querySelector(".get-cnt");
     this.btnGet.addEventListener("click", () => {
+      const totalVal = parseInt(
+        this.totalPrice.textContent.replaceAll(",", "")
+      );
       const stagedList = this.stagedLists.querySelectorAll("li");
-      console.log(stagedList);
+      const getList = this.getLists.querySelectorAll("li");
+      let sum = 0;
       stagedList.forEach((sItem) => {
-        const getList = this.getLists.querySelectorAll("li");
         let flag = 0;
         getList.forEach((gItem) => {
-          let getCnt = parseInt(gItem.querySelector(".get-cnt").textContent);
-          let stagedCnt = parseInt(sItem.querySelector(".get-cnt").textContent);
+          const stagedCnt = parseInt(
+            sItem.querySelector(".get-cnt").textContent
+          );
+          const getCnt = parseInt(gItem.querySelector(".get-cnt").textContent);
           if (
             sItem.querySelector(".item-name").textContent ===
             gItem.querySelector(".item-name").textContent
@@ -127,7 +119,18 @@ class VendingMachineEvents {
         if (!flag) {
           this.getLists.append(sItem);
         }
+
+        this.btnsCola.forEach((cola) => {
+          if (
+            sItem.querySelector(".item-name").textContent === cola.dataset.name
+          ) {
+            sum += parseInt(
+              cola.dataset.price * sItem.querySelector(".get-cnt").textContent
+            );
+          }
+        });
       });
+      this.totalPrice.textContent = totalVal + sum;
     });
   }
 }
