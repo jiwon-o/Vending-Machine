@@ -104,6 +104,31 @@ class VendingMachineEvents {
         }
       });
     });
+
+    this.getCnt = this.getLists.querySelector(".get-cnt");
+    this.btnGet.addEventListener("click", () => {
+      const stagedList = this.stagedLists.querySelectorAll("li");
+      console.log(stagedList);
+      stagedList.forEach((sItem) => {
+        const getList = this.getLists.querySelectorAll("li");
+        let flag = 0;
+        getList.forEach((gItem) => {
+          let getCnt = parseInt(gItem.querySelector(".get-cnt").textContent);
+          let stagedCnt = parseInt(sItem.querySelector(".get-cnt").textContent);
+          if (
+            sItem.querySelector(".item-name").textContent ===
+            gItem.querySelector(".item-name").textContent
+          ) {
+            gItem.querySelector(".get-cnt").textContent = getCnt + stagedCnt;
+            this.stagedLists.innerHTML = "";
+            flag = 1;
+          }
+        });
+        if (!flag) {
+          this.getLists.append(sItem);
+        }
+      });
+    });
   }
 }
 
