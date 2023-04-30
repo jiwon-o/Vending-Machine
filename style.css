@@ -334,7 +334,7 @@ main {
   flex-grow: 1;
 }
 
-.get-info .total {
+.get-info .total-price {
   text-align: end;
   font-size: 12px;
   font-weight: 500;
