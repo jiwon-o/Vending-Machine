@@ -21,12 +21,88 @@ class VendingMachineEvents {
     const stagedItem = document.createElement("li");
     stagedItem.classList = "get-list";
     stagedItem.innerHTML = `
-            <img src="images/${target.dataset.img}" alt="오리지널 콜라" />
+            <img src="images/${target.dataset.img}" alt="${target.dataset.name}" />
             <span class="item-name">${target.dataset.name}</span>
             <p class="get-cnt">1</p>
+            <button type="button" class="btn-sub">-</button>
+            <button type="button" class="btn-add">+</button>
+            <button type="button" class="btn-del">x</button>
           `;
     this.stagedLists.append(stagedItem);
+
+    stagedItem.querySelector(".btn-sub").addEventListener("click", (e) => {
+      const balanceVal = parseInt(this.balance.textContent.replaceAll(",", ""));
+      const targetElPrice = parseInt(target.dataset.price);
+      this.balance.textContent =
+        new Intl.NumberFormat().format(balanceVal + targetElPrice) + " 원";
+
+      stagedItem.querySelector(".get-cnt").textContent--;
+      target.dataset.count++;
+      console.log(target);
+      if (parseInt(target.dataset.count) && target.querySelector(".sold-out")) {
+        target.querySelector(".sold-out").remove();
+        target.disabled = false;
+        stagedItem.querySelector(".btn-add").disabled = false;
+      }
+    });
+
+    stagedItem.querySelector(".btn-add").addEventListener("click", (e) => {
+      const balanceVal = parseInt(this.balance.textContent.replaceAll(",", ""));
+      const targetElPrice = parseInt(target.dataset.price);
+      console.log(target);
+      if (balanceVal >= targetElPrice) {
+        this.balance.textContent =
+          new Intl.NumberFormat().format(balanceVal - targetElPrice) + " 원";
+        stagedItem.querySelector(".get-cnt").textContent++;
+        target.dataset.count--;
+      } else {
+        alert("잔액이 부족합니다.");
+      }
+
+      if (!parseInt(target.dataset.count)) {
+        target.insertAdjacentHTML(
+          "beforeEnd",
+          `
+            <div class="sold-out">
+              <strong>품절</strong>
+            </div>
+          `
+        );
+
+        target.disabled = true;
+        e.target.disabled = true;
+      }
+    });
+
+    stagedItem.querySelector(".btn-del").addEventListener("click", (e) => {
+      const balanceVal = parseInt(this.balance.textContent.replaceAll(",", ""));
+      const targetElPrice = parseInt(target.dataset.price);
+      let targetElCount = parseInt(target.dataset.count);
+      if (confirm("정말 삭제하시겠습니까?")) {
+        targetElCount += parseInt(
+          stagedItem.querySelector(".get-cnt").textContent
+        );
+        target.dataset.count = targetElCount;
+        console.log(target);
+        stagedItem.remove();
+        this.balance.textContent =
+          new Intl.NumberFormat().format(
+            balanceVal +
+              targetElPrice * stagedItem.querySelector(".get-cnt").textContent
+          ) + " 원";
+
+        if (
+          parseInt(target.dataset.count) &&
+          target.querySelector(".sold-out")
+        ) {
+          target.querySelector(".sold-out").remove();
+          target.disabled = false;
+        }
+      }
+    });
   }
+
+  soldout;
 
   bindEvent() {
     this.btnPut.addEventListener("click", () => {
@@ -39,7 +115,7 @@ class VendingMachineEvents {
         this.inpMoney.focus();
       } else {
         if (inputCost) {
-          if (myMoneyVal >= inputCost) {
+          if (myMoneyVal >= inputCost && inputCost > 0) {
             this.myMoney.textContent =
               new Intl.NumberFormat().format(myMoneyVal - inputCost) + " 원";
             this.balance.textContent =
@@ -69,22 +145,38 @@ class VendingMachineEvents {
         const balanceVal = parseInt(
           this.balance.textContent.replaceAll(",", "")
         );
-        const targetElPrice = parseInt(e.currentTarget.dataset.price);
+        const targetEl = e.currentTarget;
+        const targetElPrice = parseInt(targetEl.dataset.price);
+        const stagedListitem = this.stagedLists.querySelectorAll("li");
+        let isStaged = false;
         if (balanceVal >= targetElPrice) {
           this.balance.textContent =
             new Intl.NumberFormat().format(balanceVal - targetElPrice) + " 원";
 
-          const liEl = this.stagedLists.querySelectorAll("li");
-          let flag = 0;
-          liEl.forEach((el) => {
+          stagedListitem.forEach((el) => {
             const colaName = el.querySelector(".item-name").textContent;
-            if (colaName === e.currentTarget.dataset.name) {
+            if (colaName === targetEl.dataset.name) {
               el.querySelector(".get-cnt").textContent++;
-              flag = 1;
+              isStaged = true;
             }
           });
-          if (!flag) {
-            this.stagedItemGenerator(e.currentTarget);
+          if (!isStaged) {
+            this.stagedItemGenerator(targetEl);
+          }
+
+          targetEl.dataset.count--;
+
+          if (!parseInt(targetEl.dataset.count)) {
+            targetEl.insertAdjacentHTML(
+              "beforeEnd",
+              `
+                <div class="sold-out">
+                  <strong>품절</strong>
+                </div>
+              `
+            );
+
+            targetEl.disabled = "disabled";
           }
         } else {
           alert("잔액이 부족합니다.");
@@ -101,7 +193,7 @@ class VendingMachineEvents {
       const getList = this.getLists.querySelectorAll("li");
       let sum = 0;
       stagedList.forEach((sItem) => {
-        let flag = 0;
+        let isStaged = false;
         getList.forEach((gItem) => {
           const stagedCnt = parseInt(
             sItem.querySelector(".get-cnt").textContent
@@ -113,10 +205,10 @@ class VendingMachineEvents {
           ) {
             gItem.querySelector(".get-cnt").textContent = getCnt + stagedCnt;
             this.stagedLists.innerHTML = "";
-            flag = 1;
+            isStaged = true;
           }
         });
-        if (!flag) {
+        if (!isStaged) {
           this.getLists.append(sItem);
         }
 

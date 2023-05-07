@@ -139,10 +139,6 @@ main {
   border-radius: var(--border-radius-10);
 }
 
-.btn-cola:hover {
-  box-shadow: 0 0 0 3px var(--color-main);
-}
-
 .btn-cola .sold-out {
   width: 100%;
   height: 100%;
@@ -270,6 +266,7 @@ main {
 }
 
 .get-list {
+  position: relative;
   display: flex;
   align-items: center;
   background-color: var(--color-white);
@@ -277,8 +274,89 @@ main {
   border-radius: var(--border-radius-5);
 }
 
-.get-list:hover {
-  cursor: pointer;
+.get-list::after,
+.get-list [class|="btn"] {
+  display: none;
+  content: "";
+  position: absolute;
+}
+
+.vendor .get-list::after {
+  top: 0;
+  left: 0;
+  background-color: #0000008e;
+  width: 100%;
+  height: 100%;
+  border-radius: var(--border-radius-5);
+}
+
+.vendor .get-list [class|="btn"] {
+  border: 1px solid #fff;
+  border-radius: 6px;
+  background-color: #a280ff;
+  color: #fff;
+  z-index: 1;
+}
+
+.vendor .get-list .btn-sub {
+  top: 50%;
+  left: 25%;
+  width: 20px;
+  height: 20px;
+  transform: translateY(-50%);
+}
+
+.vendor .get-list .btn-add {
+  top: 50%;
+  right: 25%;
+  width: 20px;
+  height: 20px;
+  transform: translateY(-50%);
+  line-height: 2px;
+}
+
+.vendor .get-list .btn-del {
+  top: -6px;
+  right: -6px;
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  background-color: var(--color-main);
+  line-height: 8px;
+}
+
+.vendor .get-list:hover::after,
+.vendor .get-list:hover [class|="btn"] {
+  display: block;
+}
+
+.vendor .get-list .btn-sub:hover,
+.vendor .get-list .btn-add:hover {
+  background-color: var(--color-main);
+}
+
+.get-cnt {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-left: auto;
+  width: 30px;
+  height: 30px;
+  border: var(--border-solid);
+  border-radius: var(--border-radius-5);
+  font-size: 14px;
+  font-weight: 500;
+}
+
+.vendor .get-list:hover .get-cnt {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 1;
+  background-color: #8153ff;
+  color: #fff;
+  border: 1px solid #fff;
 }
 
 .get-list.active {
@@ -295,19 +373,6 @@ main {
 
 .get-list .item-name {
   margin-left: 10px;
-}
-
-.get-cnt {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  margin-left: auto;
-  width: 30px;
-  height: 30px;
-  border: var(--border-solid);
-  border-radius: var(--border-radius-5);
-  font-size: 14px;
-  font-weight: 500;
 }
 
 .my-info {
