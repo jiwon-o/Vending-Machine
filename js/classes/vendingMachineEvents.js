@@ -15,6 +15,26 @@ class VendingMachineEvents {
     const getInfo = document.querySelector(".get-info");
     this.getLists = getInfo.querySelector(".get-lists");
     this.totalPrice = getInfo.querySelector(".total-price span");
+
+    this.modal = document.querySelector(".modal");
+    this.btnConfirm = this.modal.querySelector(".btn-confirm");
+    this.btnCancle = this.modal.querySelector(".btn-cancle");
+    this.dim = document.querySelector(".dim");
+    this.modal.querySelectorAll("button").forEach((item) =>
+      item.addEventListener("click", () => {
+        this.modal.classList.remove("active");
+      })
+    );
+  }
+
+  onModal() {
+    this.modal.classList.add("active");
+    this.btnConfirm.addEventListener("click", () => {
+      return 1;
+    });
+    this.btnCancle.addEventListener("click", () => {
+      return 0;
+    });
   }
 
   stagedItemGenerator(target) {
@@ -192,37 +212,43 @@ class VendingMachineEvents {
       const stagedList = this.stagedLists.querySelectorAll("li");
       const getList = this.getLists.querySelectorAll("li");
       let sum = 0;
-      stagedList.forEach((sItem) => {
-        let isStaged = false;
-        getList.forEach((gItem) => {
-          const stagedCnt = parseInt(
-            sItem.querySelector(".get-cnt").textContent
-          );
-          const getCnt = parseInt(gItem.querySelector(".get-cnt").textContent);
-          if (
-            sItem.querySelector(".item-name").textContent ===
-            gItem.querySelector(".item-name").textContent
-          ) {
-            gItem.querySelector(".get-cnt").textContent = getCnt + stagedCnt;
-            this.stagedLists.innerHTML = "";
-            isStaged = true;
-          }
-        });
-        if (!isStaged) {
-          this.getLists.append(sItem);
-        }
-
-        this.btnsCola.forEach((cola) => {
-          if (
-            sItem.querySelector(".item-name").textContent === cola.dataset.name
-          ) {
-            sum += parseInt(
-              cola.dataset.price * sItem.querySelector(".get-cnt").textContent
+      if (!this.onModal()) return;
+      else {
+        stagedList.forEach((sItem) => {
+          let isStaged = false;
+          getList.forEach((gItem) => {
+            const stagedCnt = parseInt(
+              sItem.querySelector(".get-cnt").textContent
             );
+            const getCnt = parseInt(
+              gItem.querySelector(".get-cnt").textContent
+            );
+            if (
+              sItem.querySelector(".item-name").textContent ===
+              gItem.querySelector(".item-name").textContent
+            ) {
+              gItem.querySelector(".get-cnt").textContent = getCnt + stagedCnt;
+              this.stagedLists.innerHTML = "";
+              isStaged = true;
+            }
+          });
+          if (!isStaged) {
+            this.getLists.append(sItem);
           }
+
+          this.btnsCola.forEach((cola) => {
+            if (
+              sItem.querySelector(".item-name").textContent ===
+              cola.dataset.name
+            ) {
+              sum += parseInt(
+                cola.dataset.price * sItem.querySelector(".get-cnt").textContent
+              );
+            }
+          });
         });
-      });
-      this.totalPrice.textContent = totalVal + sum;
+        this.totalPrice.textContent = totalVal + sum;
+      }
     });
   }
 }

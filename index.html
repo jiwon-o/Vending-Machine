@@ -42,7 +42,16 @@
               placeholder="입금액 입력" />
             <button type="button" class="btn-put">입금</button>
             <h3 class="a11y-hidden">장바구니</h3>
-            <ul class="get-lists"></ul>
+            <ul class="get-lists">
+              <!-- <li class="get-list">
+                <img src="images/cola-original.svg" alt="오리지널 콜라" />
+                <span class="item-name">오리지널 콜라</span>
+                <p class="get-cnt">1</p>
+                <button type="button" class="btn-sub">-</button>
+                <button type="button" class="btn-add">+</button>
+                <button type="button" class="btn-del">x</button>
+              </li> -->
+            </ul>
             <button type="button" class="btn-get">획득</button>
           </form>
         </section>
@@ -60,7 +69,15 @@
         </section>
       </main>
     </div>
-
+    <article class="modal">
+      <h2>구매하기</h2>
+      <p>장바구니에 담긴 음료를 구매하시겠습니까?</p>
+      <menu>
+        <button class="btn-cancel" type="button">취소</button>
+        <button class="btn-confirm" type="button">확인</button>
+      </menu>
+    </article>
+    <div class="dim"></div>
     <script type="module" src="js/main.js"></script>
   </body>
 </html>
